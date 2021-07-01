@@ -4,6 +4,7 @@ import com.halim.manageremployee.model.Employee;
 import com.halim.manageremployee.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +43,7 @@ public class EmployeeResouce {
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
+    @Transactional
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Employee> deleteEmployee(@PathVariable("id") Long id){
         employeeService.deleteEmployee(id);
